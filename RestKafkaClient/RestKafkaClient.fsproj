@@ -7,6 +7,7 @@
     <ItemGroup>
         <Compile Include="WeatherForecast.fs" />
         <Compile Include="Backgrounds\StringConsumer.fs" />
+        <Compile Include="Backgrounds\ByteArrayConsumer.fs" />
         <Compile Include="Controllers/WeatherForecastController.fs" />
         <Compile Include="Controllers\ProduceController.fs" />
         <Compile Include="Program.fs" />

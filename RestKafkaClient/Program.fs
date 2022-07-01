@@ -29,6 +29,7 @@ module Program =
         let producerConfig =  ProducerConfig(BootstrapServers = "localhost:9092")
         builder.Services.AddSingleton(new ProducerFacade<string, ScoreResult>(producerConfig))
         builder.Services.AddHostedService<StringConsumer>()
+        builder.Services.AddHostedService<ByteArrayConsumer>()
         
         builder.Services.AddControllers()
 

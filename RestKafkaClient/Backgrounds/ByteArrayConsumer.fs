@@ -9,7 +9,7 @@ open Microsoft.Extensions.Hosting
 open Microsoft.Extensions.Logging
 open SharedLibrary
 
-type StringConsumer(logger: ILogger<StringConsumer>) =
+type ByteArrayConsumer(logger: ILogger<ByteArrayConsumer>) =
     inherit BackgroundService()
 
     let config = ConsumerConfig(BootstrapServers = "localhost:9092")
@@ -20,7 +20,7 @@ type StringConsumer(logger: ILogger<StringConsumer>) =
     override this.ExecuteAsync(stoppingToken) =
         try
             task {
-                use consumer = new ConsumerFacade<string, ScoreResult, string>(config, "test-serde-string", fun s -> JsonSerializer.Deserialize<ScoreResult>(s, JsonSerializerOptions(PropertyNameCaseInsensitive = true)))
+                use consumer = new ConsumerFacade<string, ScoreResult, byte[]>(config, "test-serde-bytearray", fun b -> JsonSerializer.Deserialize<ScoreResult>(b, JsonSerializerOptions(PropertyNameCaseInsensitive = true)))
                 while not stoppingToken.IsCancellationRequested do
                     let! msg = Task.Run(Func<ScoreResult>(fun () -> consumer.FetchNext stoppingToken))
                     msg.ToString() |> logger.LogInformation
