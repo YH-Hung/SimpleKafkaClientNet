@@ -6,6 +6,10 @@ Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "KafkaFacade", "KafkaFacade\
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "SimpleConsumer", "SimpleConsumer\SimpleConsumer.fsproj", "{E438086A-1B9B-40EA-8E4A-AAEE5B2395B2}"
 EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "RestKafkaClient", "RestKafkaClient\RestKafkaClient.fsproj", "{B40BF914-B211-44CF-B852-C70C5752BE2E}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "SharedLibrary", "SharedLibrary\SharedLibrary.fsproj", "{F8614076-454A-4EF3-BF24-48EF32FED97D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +28,13 @@ Global
 		{E438086A-1B9B-40EA-8E4A-AAEE5B2395B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E438086A-1B9B-40EA-8E4A-AAEE5B2395B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E438086A-1B9B-40EA-8E4A-AAEE5B2395B2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B40BF914-B211-44CF-B852-C70C5752BE2E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B40BF914-B211-44CF-B852-C70C5752BE2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B40BF914-B211-44CF-B852-C70C5752BE2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B40BF914-B211-44CF-B852-C70C5752BE2E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F8614076-454A-4EF3-BF24-48EF32FED97D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8614076-454A-4EF3-BF24-48EF32FED97D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8614076-454A-4EF3-BF24-48EF32FED97D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8614076-454A-4EF3-BF24-48EF32FED97D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

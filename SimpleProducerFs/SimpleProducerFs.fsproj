@@ -11,6 +11,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\KafkaFacade\KafkaFacade.fsproj" />
+      <ProjectReference Include="..\SharedLibrary\SharedLibrary.fsproj" />
     </ItemGroup>
 
 </Project>

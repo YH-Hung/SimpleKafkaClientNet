@@ -2,6 +2,7 @@
 open System.Threading
 open Confluent.Kafka
 open KafkaFacade
+open SharedLibrary
 
 let args = Environment.GetCommandLineArgs()
 let config = ConsumerConfig(BootstrapServers = args[1])
@@ -15,7 +16,7 @@ Console.CancelKeyPress.Add (fun e ->
     e.Cancel <- true
     cts.Cancel())
 
-using (new ConsumerFacade<string>(config, topicName)) (fun consumer ->
+using (new ConsumerFacade<ScoreResult>(config, topicName)) (fun consumer ->
     try
         while not cts.IsCancellationRequested do
             consumer.FetchNext cts.Token
