@@ -15,6 +15,7 @@ open Microsoft.Extensions.Configuration
 open Microsoft.Extensions.DependencyInjection
 open Microsoft.Extensions.Hosting
 open Microsoft.Extensions.Logging
+open RestKafkaClient.Backgrounds
 open SharedLibrary
 
 module Program =
@@ -27,6 +28,7 @@ module Program =
 
         let producerConfig =  ProducerConfig(BootstrapServers = "localhost:9092")
         builder.Services.AddSingleton(new ProducerFacade<string, ScoreResult>(producerConfig))
+        builder.Services.AddHostedService<StringConsumer>()
         
         builder.Services.AddControllers()
 

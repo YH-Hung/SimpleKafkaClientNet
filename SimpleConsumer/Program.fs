@@ -1,4 +1,5 @@
 ﻿open System
+open System.Text.Json
 open System.Threading
 open Confluent.Kafka
 open KafkaFacade
@@ -16,7 +17,7 @@ Console.CancelKeyPress.Add (fun e ->
     e.Cancel <- true
     cts.Cancel())
 
-using (new ConsumerFacade<ScoreResult>(config, topicName)) (fun consumer ->
+using (new ConsumerFacade<int, ScoreResult, string>(config, topicName, JsonSerializer.Deserialize<ScoreResult>)) (fun consumer ->
     try
         while not cts.IsCancellationRequested do
             consumer.FetchNext cts.Token

@@ -5,14 +5,14 @@ open System.Text.Json
 open System.Threading
 open Confluent.Kafka
 
-type ConsumerFacade<'TValue when 'TValue : not struct>(config : ConsumerConfig, topicName : string) =
-    let consumer = ConsumerBuilder<string, string>(config).Build()
+type ConsumerFacade<'TKey, 'TValue, 'TSerde when 'TValue : not struct>(config : ConsumerConfig, topicName : string, deserializer: 'TSerde -> 'TValue) =
+    let consumer = ConsumerBuilder<'TKey, 'TSerde>(config).Build()
     do
         consumer.Subscribe(topicName)
 
     member this.FetchNext (cts : CancellationToken) =
         let msgContent = consumer.Consume(cts).Message.Value
-        JsonSerializer.Deserialize<'TValue> msgContent
+        deserializer msgContent
 
     interface IDisposable with
         member this.Dispose() = consumer.Close()
